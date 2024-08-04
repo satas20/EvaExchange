@@ -18,6 +18,7 @@ public class TradeController {
         this.tradeService = tradeService;
     }
 
+    //TO DO: implement controller
     @PostMapping("/buy")
     public ResponseEntity<Share> buyShare(@RequestBody @Valid TradeDto tradeDTO) {
         //Share share = tradeService.buyShare(tradeDTO.getSymbol(), tradeDTO.getPrice());

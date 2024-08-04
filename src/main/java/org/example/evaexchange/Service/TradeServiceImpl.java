@@ -68,6 +68,7 @@ public class TradeServiceImpl implements TradeService {
         trade.setType(TradeType.BUY);
         trade.setPrice(share.getPrice());
 
+
         Trade savedTrade = tradeRepo.save(trade);
         PortfolioShare portfolioShare = portfolioShareRepo.findByPortfolioIdAndShareId(portfolio.getId(), share.getId());
 
@@ -78,6 +79,8 @@ public class TradeServiceImpl implements TradeService {
             portfolioShare.setShare(share);
             portfolioShare.setQuantity(0);
         }
+        // TO DO : Calculate the quantity of shares  according to the trade value
+        //TO DO : Use the MAPPER AND DTOS
         portfolioShare.setQuantity(portfolioShare.getQuantity() + trade.getQuantity());
         portfolioShareRepo.save(portfolioShare);
 
