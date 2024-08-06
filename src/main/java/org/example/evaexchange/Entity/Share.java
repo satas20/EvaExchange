@@ -1,5 +1,6 @@
 package org.example.evaexchange.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -17,14 +18,18 @@ public class Share {
     @Column(unique = true, length = 3)
     private String symbol;
 
-    @Column(precision = 10, scale = 2)
-    private BigDecimal price;
+
+    private Double price;
 
     @OneToMany(mappedBy = "share")
+    @JsonIgnore
     private Set<PortfolioShare> portfolioShares;
 
     @OneToMany(mappedBy = "share")
+    @JsonIgnore
     private Set<Trade> trades;
 
-
+    public void setPrice(Double price) {
+        this.price = BigDecimal.valueOf(price).setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
+    }
 }

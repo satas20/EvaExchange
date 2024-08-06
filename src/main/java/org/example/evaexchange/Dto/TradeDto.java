@@ -14,8 +14,8 @@ public class TradeDto {
     private Long portfolioId;
     private Long shareId;
     private TradeType type;
-    private int quantity;
-    private BigDecimal price;
+    private double quantity;
+    private double price;
     private LocalDateTime timestamp;
 
 }

@@ -10,6 +10,6 @@ import java.math.BigDecimal;
 public class ShareDto {
     private Long id;
     private String symbol;
-    private BigDecimal price;
+    private double price;
 
 }

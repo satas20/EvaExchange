@@ -1,5 +1,6 @@
 package org.example.evaexchange.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -17,6 +18,7 @@ public class PortfolioShare {
     private PortfolioShareId id;
 
     @ManyToOne
+    @JsonIgnore
     @MapsId("portfolioId")
     @JoinColumn(name = "portfolio_id")
     private Portfolio portfolio;
@@ -26,6 +28,6 @@ public class PortfolioShare {
     @JoinColumn(name = "share_id")
     private Share share;
 
-    private int quantity;
+    private double quantity;
 
 }

@@ -6,16 +6,21 @@ import org.example.evaexchange.Entity.Share;
 import org.example.evaexchange.Entity.Trade;
 import org.example.evaexchange.Repository.PortfolioRepo;
 import org.example.evaexchange.Repository.ShareRepo;
+import org.example.evaexchange.Service.PortfolioService;
+import org.example.evaexchange.Service.ShareService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
 public class TradeMapper {
 
-    @Autowired
-    private PortfolioRepo portfolioRepository;
-    @Autowired
-    private ShareRepo shareRepo;
+    private final PortfolioService portfolioService;
+    private final ShareService shareService;
+
+    public TradeMapper(PortfolioService portfolioService, ShareService shareService) {
+        this.portfolioService = portfolioService;
+        this.shareService = shareService;
+    }
 
     public TradeDto toDto(Trade trade) {
         TradeDto dto = new TradeDto();
@@ -42,12 +47,16 @@ public class TradeMapper {
     }
 
     private Portfolio fetchPortfolioById(Long id) {
-        return portfolioRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Portfolio not found for id: " + id));
+        if (portfolioService.getPortfolioById(id)==null) {
+            throw new IllegalArgumentException("Portfolio not found for id: " + id);
+        }
+        return portfolioService.getPortfolioById(id);
     }
 
     private Share fetchShareById(Long id) {
-        return shareRepo.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Share not found for id: " + id));
+        if( shareService.getShareById(id) == null) {
+            throw new IllegalArgumentException("Share not found for id: " + id);
+        }
+        return shareService.getShareById(id);
     }
 }

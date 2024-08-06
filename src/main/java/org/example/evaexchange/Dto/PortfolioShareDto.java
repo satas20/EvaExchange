@@ -8,6 +8,6 @@ import lombok.Setter;
 public class PortfolioShareDto {
     private Long portfolioId;
     private Long shareId;
-    private int quantity;
+    private double quantity;
 
 }

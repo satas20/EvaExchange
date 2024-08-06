@@ -1,5 +1,6 @@
 package org.example.evaexchange.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -15,6 +16,7 @@ public class Trade {
     private Long id;
 
     @ManyToOne
+    @JsonIgnore
     @JoinColumn(name = "portfolio_id")
     private Portfolio portfolio;
 
@@ -25,10 +27,9 @@ public class Trade {
     @Enumerated(EnumType.STRING)
     private TradeType type;
 
-    private int quantity;
+    private double quantity;
 
-    @Column(precision = 10, scale = 2)
-    private BigDecimal price;
+    private double price;
 
     private LocalDateTime timestamp;
 

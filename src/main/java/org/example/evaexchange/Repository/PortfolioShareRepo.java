@@ -15,6 +15,6 @@ public interface PortfolioShareRepo extends JpaRepository<PortfolioShare, Portfo
     List<PortfolioShare> findAllByPortfolioId(Long portfolioId);
     PortfolioShare findByPortfolioIdAndShareId(Long portfolioId, Long shareId);
     void deleteByPortfolioIdAndShareId(Long portfolioId, Long shareId);
-
+    List<PortfolioShare> findByPortfolioId(Long id);
 
 }

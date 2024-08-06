@@ -1,5 +1,6 @@
 package org.example.evaexchange.Service;
 
+import jakarta.transaction.Transactional;
 import org.example.evaexchange.Entity.User;
 import org.example.evaexchange.Repository.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +23,7 @@ public class UserServiceImpl implements UserService {
     public User getUserById(Long id) {
         return userRepo.findById(id).orElse(null);
     }
-
+    @Transactional
     @Override
     public User createUser(User user) {
         return userRepo.save(user);
