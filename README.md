@@ -26,3 +26,13 @@ You can test the API using Postman Collection [here](https://elements.getpostman
 <p align="center">
 <img src="Media/EntityDiagram.png" width="446">
 </p>
+
+## How to run the application
+1. **Clone the Repository**
+   ```bash
+   git clone https://github.com/satas20/EvaExchange.git
+   cd EvaExchange
+2. Open the project in your IDE
+3. Run the application
+4. Open Postman and test the API using the Postman Collection
+
