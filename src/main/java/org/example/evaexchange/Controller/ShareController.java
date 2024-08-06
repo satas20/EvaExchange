@@ -33,6 +33,19 @@ public class ShareController {
         return new ResponseEntity<>(updatedShare, HttpStatus.OK);
 
     }
+    @PostMapping ("/createShare")
+    public ResponseEntity<Share> createShare(@RequestBody Share share) {
+        Share newShare;
+        try {
+
+            newShare = shareService.createShare(share);
+        }
+        catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity<>(newShare, HttpStatus.CREATED);
+    }
+
     @GetMapping("/{id}/TradeHistory")
     public ResponseEntity<List<Trade>> getShareHistory(@PathVariable Long id) {
         List<Trade> tradeList=tradeService.getTradesByShareId(id);
